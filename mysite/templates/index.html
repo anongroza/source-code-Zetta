@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <link rel="stylesheet" href="/static/style.css">
-   <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
 </head>
 <body>
     <div class="star-field" id="starField"></div>
     <div class="auth-container" id="authContainer">
-        <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
-            <button id="langBtn" style="width: auto; padding: 4px 8px; font-size: 12px;">🇷🇺 RU / EN</button>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <button class="github-btn" onclick="window.open('https://github.com/anongroza/source-code-Zetta', '_blank')">🐙 GitHub</button>
+            <button id="langBtn">RU / EN</button>
         </div>
         <h2 id="title">⚡ Zetta</h2>
         <div id="authForm">

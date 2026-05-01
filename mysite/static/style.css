@@ -600,6 +600,21 @@ h2, h3 {
 #langBtn:hover {
     background: rgba(255,255,255,0.3);
 }
+.github-btn {
+    background: #24292e;
+    border: none;
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    width: auto;
+    border-radius: 16px;
+    transition: 0.2s;
+}
+
+.github-btn:hover {
+    background: #3a3f44;
+    cursor: pointer;
+}
 .login-message {
     background: #ff9800;
     color: #000;
