@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zetta</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <link rel="stylesheet" href="/static/style.css">
+   <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+</head>
+<body>
+    <div class="star-field" id="starField"></div>
+    <div class="auth-container" id="authContainer">
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+            <button id="langBtn" style="width: auto; padding: 4px 8px; font-size: 12px;">🇷🇺 RU / EN</button>
+        </div>
+        <h2 id="title">⚡ Zetta</h2>
+        <div id="authForm">
+            <input type="text" id="loginInput" placeholder="Логин" data-placeholder-ru="Логин" data-placeholder-en="Login">
+            <input type="password" id="passwordInput" placeholder="Пароль" data-placeholder-ru="Пароль" data-placeholder-en="Password">
+            <input type="password" id="secretInput" placeholder="Кодовая фраза" data-placeholder-ru="Кодовая фраза" data-placeholder-en="Secret phrase">
+            <div id="loginMessage" class="login-message" style="display: none;"></div>
+            <button id="loginBtn">Войти</button>
+            <button class="switch-btn" id="showRegisterBtn">Создать аккаунт</button>
+        </div>
+        <div id="registerForm" style="display:none">
+            <input type="text" id="regLogin" placeholder="Логин">
+            <input type="password" id="regPassword" placeholder="Пароль">
+            <input type="password" id="regSecret" placeholder="Кодовая фраза">
+            <input type="text" id="regName" placeholder="Ваше имя">
+            <input type="text" id="regEmoji" placeholder="Аватар-эмодзи" value="👤" maxlength="2">
+            <div id="passwordStrengthHint" style="font-size: 12px; color: #ff9800; margin-bottom: 10px;"></div>
+            <button id="registerBtn">Зарегистрироваться</button>
+            <button class="switch-btn" id="showLoginBtn">Уже есть аккаунт</button>
+        </div>
+        <div id="authError" class="error"></div>
+    </div>
+    <div class="app-container" id="appContainer">
+        <div class="app-header">
+            <h2>⚡ Zetta</h2>
+            <div class="user-menu" id="userMenu" onclick="toggleLogout()">
+                <span id="userLoginDisplay"></span>
+                <span>▼</span>
+            </div>
+            <div class="logout-btn-hidden" id="logoutBtn" onclick="logout()">Выйти</div>
+        </div>
+        <div class="dialogs-list" id="dialogsList"><div class="empty-state">💬 Нет диалогов. Нажмите + чтобы добавить друга.</div></div>
+        <div class="fab" onclick="openAddUserModal()">+</div>
+    </div>
+    <div class="app-container" id="chatWindow" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); margin:0; width:95%; max-width:550px; height:80vh;">
+        <div class="chat-header">
+            <button class="back-btn" onclick="closeChat()">←</button>
+            <div class="chat-avatar" id="chatAvatar">👤</div>
+            <div class="chat-title" id="chatTitle"></div>
+        </div>
+        <div class="messages-area" id="chatMessagesArea"></div>
+        <div class="input-area">
+            <input type="text" id="messageInput" placeholder="Сообщение">
+            <label for="imageUpload" class="input-btn" style="cursor:pointer;">📷</label>
+            <input type="file" id="imageUpload" accept="image/*" style="display:none">
+            <button class="input-btn" id="sendMsgBtn">📤</button>
+        </div>
+    </div>
+    <div id="addUserModal" class="modal">
+        <div class="modal-content">
+            <h3>Добавить пользователя</h3>
+            <input type="text" id="searchUserInput" class="search-input" placeholder="Введите логин" onkeyup="searchUsersToAdd()">
+            <div id="searchResultsList"></div>
+            <button onclick="closeAddUserModal()">Закрыть</button>
+        </div>
+    </div>
+    <div id="infoModal" class="info-modal">
+        <div class="info-modal-content">
+            <div class="info-modal-icon">🛡️</div>
+            <div class="info-modal-title">Важно знать</div>
+            <div class="info-modal-text" id="infoText">
+                Сайт находится в активной разработке.<br><br>
+                Сервер <strong>НЕ ведёт логи содержимого сообщений</strong> (благодаря сквозному шифрованию).<br>
+                Логируются только время и факт переписки для технической отладки.<br><br>
+                <strong>Исходный код публикуется на GitHub</strong> что бы вы убедились в безопасности Zetta проекта.<br><br>
+                Сервис Zetta будет недоступен для рук запретников.
+                однако вам все еще придется пользоватся VPN для личной безопасности.<br> (в будущем мы будем предостовлять сервисы обхода бесплатно для пользования нашего проекта Zetta).<br>
+                мы заботимся о вашей безопасности 
+            </div>
+            <div class="info-modal-note">
+                🔒 Ваши сообщения и фотографии зашифрованы и недоступны даже разработчику.
+            </div>
+            <button class="info-modal-btn" onclick="closeInfoModal()">Понятно, продолжаю</button>
+        </div>
+    </div>
+    <script src="/static/crypto.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
